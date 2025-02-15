@@ -34,7 +34,7 @@ Ensure you have the following installed:
 1. **Clone the repository:**
 
    ```sh
-   git clone https://github.com/your-repo-url.git
+   git clone https://github.com/BlockyAit/products-api-app
    cd your-project-folder
    ```
 
