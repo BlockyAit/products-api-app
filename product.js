@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 
-// Load environment variables
 dotenv.config();
 
 // Initialize app
@@ -21,7 +20,7 @@ mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-// Define Mongoose Schemas
+// Define Schemas
 const UserSchema = new mongoose.Schema({
   name: String,
   email: { type: String, unique: true },
@@ -42,7 +41,6 @@ const OrderSchema = new mongoose.Schema({
   timestamp: { type: Date, default: Date.now }
 });
 
-// Create Models
 const User = mongoose.model('User', UserSchema);
 const Product = mongoose.model('Product', ProductSchema);
 const Order = mongoose.model('Order', OrderSchema);
@@ -147,23 +145,4 @@ app.delete('/orders/:id', async (req, res) => {
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
-/*
-Instructions to Setup and Launch:
 
-1. Install dependencies:
-   npm install express mongoose dotenv bcrypt jsonwebtoken cors
-
-2. Set up environment variables:
-   Create a .env file in the root directory and add the following:
-   MONGO_URI=your_mongodb_connection_string
-   JWT_SECRET=your_secret_key
-
-3. Start the server:
-   node server.js
-
-4. Deploy to Render/Heroku:
-   - Push code to GitHub.
-   - Connect GitHub repo to Render/Heroku.
-   - Set environment variables in the cloud platform settings.
-   - Deploy and get the live URL.
-*/
